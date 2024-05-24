@@ -16,7 +16,7 @@ object RetrofitModule {
             .build()
     }
 
-    private val api: RickAndMorthyApiService by lazy {
+    val api: RickAndMorthyApiService by lazy {
         retrofitFactory.create(RickAndMorthyApiService::class.java)
     }
 }

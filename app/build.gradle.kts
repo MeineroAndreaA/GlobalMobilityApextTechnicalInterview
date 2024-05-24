@@ -31,7 +31,10 @@ android {
 
         debug {
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/api/\"")
         }
     }
@@ -42,6 +45,21 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = false
+        }
+    }
+
+    sourceSets {
+        getByName("test") {
+            assets.srcDirs("src/test/assets/")
+        }
+        getByName("androidTest") {
+            assets.srcDirs("src/androidTest/assets/")
+        }
+    }
 }
 
 dependencies {
@@ -51,11 +69,21 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.androidx.junit.ktx)
+    implementation(libs.support.annotations)
+
+    testImplementation(libs.androidx.core)
+    testImplementation(libs.androidx.runner)
+    testImplementation(libs.androidx.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    //Retrofit https://square.github.io/retrofit/ - latest vesion https://github.com/square/retrofit.
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    //Gson -> json data to java or kotlin format
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    testImplementation("org.robolectric:robolectric:4.7.3")
+    testImplementation(libs.androidx.junit)
+    testImplementation(libs.androidx.espresso.core)
+    testImplementation (libs.mockwebserver)
+
+
 }
