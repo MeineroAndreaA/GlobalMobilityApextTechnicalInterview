@@ -73,6 +73,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(libs.androidx.junit.ktx)
     implementation(libs.support.annotations)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
 
     testImplementation(libs.androidx.core)
     testImplementation(libs.androidx.runner)
