@@ -1,6 +1,12 @@
 [versions]
+activityCompose = "1.9.0"
 agp = "8.4.0"
+compiler = "1.8.10"
+composeBom = "2024.05.00"
 core = "1.5.0"
+foundation = "1.6.7"
+hiltAndroid = "2.38.1"
+hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -9,22 +15,40 @@ espressoCore = "3.5.1"
 appcompat = "1.6.1"
 kotlinxCoroutinesTest = "1.7.1"
 lifecycleViewmodelKtx = "2.5.1"
-material = "1.10.0"
+material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 junitKtx = "1.1.5"
+material3 = "1.2.1"
+materialVersion = "1.6.7"
 mockk = "1.12.0"
 mockwebserver = "4.9.3"
+navigationCompose = "2.7.7"
 robolectric = "4.2.1"
 runner = "1.5.2"
 supportAnnotations = "28.0.0"
 composePreviewRenderer = "0.0.1-alpha01"
+ui = "1.6.7"
+uiTooling = "1.6.7"
 
 [libraries]
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
