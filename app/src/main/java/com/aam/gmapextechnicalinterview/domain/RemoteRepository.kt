@@ -10,7 +10,6 @@ interface RemoteRepository {
     ): RndMNetworkResult<T> {
         return try {
             val response = execute()
-
             if (response.isSuccessful) {
                 RndMNetworkResult.Success(RickAndMortyStatus.SUCCESS, response.body()!!)
             } else {
@@ -19,6 +18,7 @@ interface RemoteRepository {
         } catch (e: HttpException) {
             RndMNetworkResult.Error(RickAndMortyStatus.ERROR, e.message())
         } catch (e: Throwable) {
+            e.printStackTrace(System.out)
             RndMNetworkResult.Exception(RickAndMortyStatus.THROWABLE, e)
         }
     }
