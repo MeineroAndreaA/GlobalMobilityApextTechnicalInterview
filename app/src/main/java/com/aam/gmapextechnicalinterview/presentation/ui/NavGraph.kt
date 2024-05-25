@@ -18,7 +18,7 @@ fun MainNavGraph(navigationViewModel: NavigationViewModel) {
     navigationViewModel.navController = navHostController
     val isLoading = remoteDataViewModel.isLoading.collectAsState().value
     val weGotAnError = remoteDataViewModel.weGotAnError.collectAsState().value
-    remoteDataViewModel.getCharactersList(null)
+
 
     NavHost(
         navController = navHostController,
@@ -27,6 +27,7 @@ fun MainNavGraph(navigationViewModel: NavigationViewModel) {
         composable(route = ScreensRoutes.CharacterList.route) {
             if (isLoading) {
                 LoadingScreen(navigationViewModel, remoteDataViewModel)
+                remoteDataViewModel.getCharactersList(null)
             } else if (weGotAnError.first) {
                 ErrorScreen(weGotAnError.second)
             } else

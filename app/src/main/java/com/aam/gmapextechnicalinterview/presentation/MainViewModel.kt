@@ -30,21 +30,20 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
 
     fun getCharactersList(pages: Int?) {
         viewModelScope.launch {
-            loading.value = true
             when (val response = remoteRepository.getCharacters(pages)) {
                 is RndMNetworkResult.Success -> {
-                    loading.value = false
                     character.value = response.data
+                    loading.value = false
                 }
 
                 is RndMNetworkResult.Error -> {
-                    loading.value = false
                     error.value = Pair(true, "")
+                    loading.value = false
 
                 }
                 is RndMNetworkResult.Exception -> {
-                    loading.value = false
                     error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                    loading.value = false
                 }
             }
         }

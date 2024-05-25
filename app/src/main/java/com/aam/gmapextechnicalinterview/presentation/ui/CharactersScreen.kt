@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.aam.gmapextechnicalinterview.presentation.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
+import java.net.URL
 
 
 @Composable
@@ -43,14 +44,20 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Button(
-                onClick = {  }
+                enabled = if (charactersList?.info!!.prev.isNullOrBlank()) false else true,
+                onClick = { remoteDataViewModel.getCharactersList(cleanUpPageNumber(charactersList.info.prev.toString())) }
             ) {
                 Text(text = "Anterior")
             }
 
-            Button(onClick = {  }) {
+            Button(onClick = { remoteDataViewModel.getCharactersList(cleanUpPageNumber(charactersList.info.next.toString())) }) {
                 Text(text = "Siguiente")
             }
         }
     }
+}
+
+fun cleanUpPageNumber(urlPages: String): Int? {
+    val pageUrlQuery = URL(urlPages).query
+    return if (!pageUrlQuery.isNullOrBlank()) pageUrlQuery.substringAfter('=').toInt() else null
 }

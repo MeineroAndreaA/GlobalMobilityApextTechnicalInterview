@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Character(
 
-    @SerializedName("info") var info: Info?,
+    @SerializedName("info") var info: Info,
     @SerializedName("results") var results: ArrayList<Results> = arrayListOf()
 
 )
