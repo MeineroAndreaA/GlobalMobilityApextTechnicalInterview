@@ -10,11 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.aam.gmapextechnicalinterview.presentation.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
 
 
 @Composable
-fun SingleCharactersScreen(navigationViewModel: NavigationViewModel) {
+fun SingleCharactersScreen(
+    navigationViewModel: NavigationViewModel,
+    remoteDataViewModel: MainViewModel
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

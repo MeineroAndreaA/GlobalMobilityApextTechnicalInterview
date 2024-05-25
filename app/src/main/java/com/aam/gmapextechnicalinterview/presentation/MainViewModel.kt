@@ -6,11 +6,14 @@ import com.aam.gmapextechnicalinterview.data.model.response.Character
 import com.aam.gmapextechnicalinterview.data.model.response.Results
 import com.aam.gmapextechnicalinterview.domain.RemoteDataSource
 import com.aam.gmapextechnicalinterview.domain.RndMNetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(private val remoteRepository: RemoteDataSource) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val remoteRepository: RemoteDataSource) : ViewModel() {
 
     private val character = MutableStateFlow<Character?>(null)
     val listOfCharacter: StateFlow<Character?> = character
@@ -27,6 +30,7 @@ class MainViewModel(private val remoteRepository: RemoteDataSource) : ViewModel(
             when (val response = remoteRepository.getCharacters(pages)) {
                 is RndMNetworkResult.Success -> {
                     loading.value = false
+                    character.value = response.data
                 }
 
                 is RndMNetworkResult.Error -> {}

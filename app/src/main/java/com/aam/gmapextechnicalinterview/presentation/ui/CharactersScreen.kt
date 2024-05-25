@@ -7,15 +7,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.aam.gmapextechnicalinterview.presentation.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
 
 
 @Composable
-fun CharactersScreen(navigationViewModel: NavigationViewModel) {
+fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewModel: MainViewModel) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -25,7 +26,8 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel) {
             onClick = { navigationViewModel.navigateToDetail(1) },
             modifier = Modifier.padding(16.dp)
         ) {
-            Text(text = "Vamos a un solo pj!")
+            remoteDataViewModel.getCharactersList(null)
+            Text(text = remoteDataViewModel.listOfCharacter.collectAsState().value.toString())
         }
     }
 }
