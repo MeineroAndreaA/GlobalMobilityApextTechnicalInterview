@@ -1,6 +1,7 @@
 package com.aam.gmapextechnicalinterview.presentation.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,19 +12,28 @@ import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
 
 @Composable
 fun MainNavGraph(navigationViewModel: NavigationViewModel) {
+
     val remoteDataViewModel: MainViewModel = hiltViewModel()
     val navHostController = rememberNavController()
     navigationViewModel.navController = navHostController
+    val isLoading = remoteDataViewModel.isLoading.collectAsState().value
+    val weGotAnError = remoteDataViewModel.weGotAnError.collectAsState().value
+    remoteDataViewModel.getCharactersList(null)
 
     NavHost(
         navController = navHostController,
         startDestination = ScreensRoutes.CharacterList.route
     ) {
         composable(route = ScreensRoutes.CharacterList.route) {
-            CharactersScreen(
-                navigationViewModel,
-                remoteDataViewModel
-            )
+            if (isLoading) {
+                LoadingScreen(navigationViewModel, remoteDataViewModel)
+            } else if (weGotAnError.first) {
+                ErrorScreen(weGotAnError.second)
+            } else
+                CharactersScreen(
+                    navigationViewModel,
+                    remoteDataViewModel
+                )
         }
         composable(route = ScreensRoutes.CharacterDetail.route) {
             SingleCharactersScreen(

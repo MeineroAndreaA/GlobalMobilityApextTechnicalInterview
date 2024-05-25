@@ -2,6 +2,7 @@
 activityCompose = "1.9.0"
 agp = "8.4.0"
 annotation = "1.8.0"
+coilCompose = "2.3.0"
 comGoogleDevtoolsKspGradlePlugin = "2.0.0-1.0.21"
 compiler = "1.8.10"
 composeBom = "2024.05.00"
@@ -59,6 +60,7 @@ androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-common = { module = "androidx.hilt:hilt-common", version.ref = "hiltCommon" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion" }

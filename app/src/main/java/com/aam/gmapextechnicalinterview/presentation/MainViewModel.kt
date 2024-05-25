@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val remoteRepository: RemoteDataSource) : ViewModel() {
+class MainViewModel @Inject constructor(private val remoteRepository: RemoteDataSource) :
+    ViewModel() {
 
     private val character = MutableStateFlow<Character?>(null)
     val listOfCharacter: StateFlow<Character?> = character
@@ -21,8 +22,11 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
     private val singleCharacter = MutableStateFlow<Results?>(null)
     val characterDetail: StateFlow<Results?> = singleCharacter
 
-    private val loading = MutableStateFlow(false)
+    private val loading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = loading
+
+    private val error = MutableStateFlow(Pair(false, ""))
+    val weGotAnError: StateFlow<Pair<Boolean, String>> = error
 
     fun getCharactersList(pages: Int?) {
         viewModelScope.launch {
@@ -33,8 +37,15 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                     character.value = response.data
                 }
 
-                is RndMNetworkResult.Error -> {}
-                is RndMNetworkResult.Exception -> {}
+                is RndMNetworkResult.Error -> {
+                    loading.value = false
+                    error.value = Pair(true, "")
+
+                }
+                is RndMNetworkResult.Exception -> {
+                    loading.value = false
+                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                }
             }
         }
     }
@@ -48,8 +59,15 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                     singleCharacter.value = response.data
                 }
 
-                is RndMNetworkResult.Error -> {}
-                is RndMNetworkResult.Exception -> {}
+                is RndMNetworkResult.Error -> {
+                    loading.value = false
+                    error.value = Pair(true, "")
+
+                }
+                is RndMNetworkResult.Exception -> {
+                    loading.value = false
+                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                }
             }
 
         }
