@@ -1,4 +1,4 @@
-package com.aam.gmapextechnicalinterview.presentation.ui
+package com.aam.gmapextechnicalinterview.presentation.ui.dialogs
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +17,14 @@ import androidx.compose.ui.res.stringResource
 import com.aam.gmapextechnicalinterview.R
 import java.util.Locale
 
+/**
+ * The following dialogs belong to the filters for: Name, Species, and Status,
+ * where the user can input the character's name or select an option.
+ *
+ * @param showDialog Flag indicating whether the dialog is currently shown, managed via StateCompose.
+ * @param onDismiss Method indicating what to do when dismissing the dialog.
+ * @param onConfirm Method capturing the written/selected value from the dialog.
+ */
 @Composable
 fun NameEntryDialog(
     showDialog: Boolean,

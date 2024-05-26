@@ -1,10 +1,8 @@
-package com.aam.gmapextechnicalinterview.presentation
+package com.aam.gmapextechnicalinterview.presentation.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.aam.gmapextechnicalinterview.data.model.ui.ScreensRoutes
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
 class NavigationViewModel: ViewModel() {
 

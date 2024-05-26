@@ -1,7 +1,5 @@
 package com.aam.gmapextechnicalinterview.data.model.response
 
-import com.aam.gmapextechnicalinterview.data.model.response.Info
-import com.aam.gmapextechnicalinterview.data.model.response.Results
 import com.google.gson.annotations.SerializedName
 
 

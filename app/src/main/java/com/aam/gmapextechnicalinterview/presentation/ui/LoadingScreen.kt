@@ -24,6 +24,9 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import kotlinx.coroutines.delay
 
+/**
+ * Composable that displays a loading screen with a Lottie animation and a loading message.
+ */
 @Composable
 fun LoadingScreen() {
 
