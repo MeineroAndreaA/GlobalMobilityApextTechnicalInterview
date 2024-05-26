@@ -15,8 +15,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.aam.gmapextechnicalinterview.R
 import com.aam.gmapextechnicalinterview.presentation.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
 import com.airbnb.lottie.compose.LottieAnimation
@@ -57,7 +59,7 @@ fun ErrorScreen(
         Button(
             onClick = { navigationViewModel.backToList() }
         ) {
-            Text(text = "Retry")
+            Text(text = stringResource(R.string.retry_button_text))
         }
     }
 }

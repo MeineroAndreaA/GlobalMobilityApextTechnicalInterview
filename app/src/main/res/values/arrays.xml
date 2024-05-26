@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="races">
+        <item>Human</item>
+        <item>Alien</item>
+        <item>Humanoid</item>
+        <item>Robot</item>
+        <item>Mythological Creature</item>
+        <item>Animal</item>
+        <item>Unknown</item>
+        <item>Poopybutthole</item>
+        <item>Mythological Creature</item>
+        <item>Cronenberg</item>
+        <item>Cat</item>
+        <item>Disease</item>
+        <item>Demon</item>
+        <item>Parasite</item>
+        <item>Amoeba</item>
+        <item>Self-aware arm</item>
+        <item>Half-dragon</item>
+        <item>Animal Person</item>
+        <item>Dinosaur</item>
+        <item>Hivemin</item>
+    </array>
+
+    <array name="statuses">
+        <item>alive</item>
+        <item>dead</item>
+        <item>unknown</item>
+    </array>
+
+</resources>

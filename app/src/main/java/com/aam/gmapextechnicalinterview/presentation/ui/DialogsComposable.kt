@@ -12,6 +12,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringArrayResource
+import androidx.compose.ui.res.stringResource
+import com.aam.gmapextechnicalinterview.R
 import java.util.Locale
 
 @Composable
@@ -25,7 +28,7 @@ fun NameEntryDialog(
 
     if (showDialog) {
         AlertDialog(
-            title = { Text("Ingresa el nombre del personaje") },
+            title = { Text(stringResource(R.string.entry_name_dialog_text)) },
             text = {
                 Column {
                     TextField(value = characterName, onValueChange = { characterName = it })
@@ -37,14 +40,14 @@ fun NameEntryDialog(
                         onConfirm(characterName)
                     }
                 ) {
-                    Text("Aceptar")
+                    Text(stringResource(R.string.accept_button_text))
                 }
             },
             dismissButton = {
                 Button(
                     onClick = { onDismiss() }
                 ) {
-                    Text("Cancelar")
+                    Text(stringResource(R.string.cancel_button_text))
                 }
             },
             onDismissRequest = { onDismiss() }
@@ -61,20 +64,21 @@ fun StatusSelectionDialog(
 ) {
 
     var statusSelected by remember { mutableStateOf("") }
+    val realStatuses = stringArrayResource(id = R.array.statuses)
 
     if (showDialog) {
         AlertDialog(
-            title = { Text("Selecciona el estado del personaje") },
+            title = { Text(stringResource(R.string.select_status_dialog_text)) },
             text = {
                 Column {
-                    TextButton(onClick = { statusSelected = "alive" }) {
-                        Text(text = "Vivo")
+                    TextButton(onClick = { statusSelected = realStatuses[0] }) {
+                        Text(text = stringResource(R.string.status_alive_text))
                     }
-                    TextButton(onClick = { statusSelected = "dead" }) {
-                        Text(text = "Muerto")
+                    TextButton(onClick = { statusSelected = realStatuses[1] }) {
+                        Text(text = stringResource(R.string.status_dead_text))
                     }
-                    TextButton(onClick = { statusSelected = "unknown" }) {
-                        Text(text = "Desconocido")
+                    TextButton(onClick = { statusSelected = realStatuses[2] }) {
+                        Text(text = stringResource(R.string.status_unknow_text))
                     }
                 }
             },
@@ -84,14 +88,14 @@ fun StatusSelectionDialog(
                         onConfirm(statusSelected)
                     }
                 ) {
-                    Text("Aceptar")
+                    Text(stringResource(R.string.accept_button_text))
                 }
             },
             dismissButton = {
                 Button(
                     onClick = { onDismiss() }
                 ) {
-                    Text("Cancelar")
+                    Text(stringResource(R.string.cancel_button_text))
                 }
             },
             onDismissRequest = { onDismiss() }
@@ -108,10 +112,11 @@ fun SpeciesEndtryDialog(
 ) {
 
     var specieSelected by remember { mutableStateOf("") }
+    val species = stringArrayResource(id = R.array.races)
 
     if (showDialog) {
         AlertDialog(
-            title = { Text("Ingresa el nombre del personaje") },
+            title = { Text(stringResource(R.string.select__species_dialog_text)) },
             text = {
                 Column {
                     LazyColumn {
@@ -133,14 +138,14 @@ fun SpeciesEndtryDialog(
                         onConfirm(specieSelected)
                     }
                 ) {
-                    Text("Aceptar")
+                    Text(stringResource(R.string.accept_button_text))
                 }
             },
             dismissButton = {
                 Button(
                     onClick = { onDismiss() }
                 ) {
-                    Text("Cancelar")
+                    Text(stringResource(R.string.cancel_button_text))
                 }
             },
             onDismissRequest = { onDismiss() }
@@ -149,25 +154,3 @@ fun SpeciesEndtryDialog(
 
 }
 
-val species = listOf(
-    "Human",
-    "Alien",
-    "Humanoid",
-    "Robot",
-    "Mythological Creature",
-    "Animal",
-    "Unknown",
-    "Poopybutthole",
-    "Mythological Creature",
-    "Cronenberg",
-    "Cat",
-    "Disease",
-    "Demon",
-    "Parasite",
-    "Amoeba",
-    "Self-aware arm",
-    "Half-dragon",
-    "Animal Person",
-    "Dinosaur",
-    "Hivemind"
-)

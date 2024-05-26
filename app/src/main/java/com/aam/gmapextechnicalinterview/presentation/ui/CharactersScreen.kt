@@ -20,7 +20,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.aam.gmapextechnicalinterview.R
 import com.aam.gmapextechnicalinterview.data.model.response.Info
 import com.aam.gmapextechnicalinterview.presentation.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
@@ -51,15 +53,15 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Button(modifier = Modifier.weight(1f), onClick = { showDialogName = true }) {
-                (Text(text = "Nombre"))
+                (Text(text = stringResource(R.string.name_filter_button_text)))
             }
 
             Button(modifier = Modifier.weight(1f), onClick = { showDialogStatus = true }) {
-                (Text(text = "Status"))
+                (Text(text = stringResource(R.string.status_filter_button_text)))
             }
 
             Button(modifier = Modifier.weight(1f), onClick = { showDialogSpecies = true }) {
-                (Text(text = "Especies"))
+                (Text(text = stringResource(R.string.species_filter_button_text)))
             }
         }
 
@@ -99,12 +101,15 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
                     )
                 }
             ) {
-                Text(text = "Anterior")
+                Text(text = stringResource(R.string.prev_button_text))
             }
 
             Text(
                 modifier = Modifier.align(Alignment.CenterVertically),
-                text = "Pagina ${cleanUpPageCount(charactersList.info)}"
+                text = stringResource(
+                    R.string.cont_pages_text,
+                    cleanUpPageCount(charactersList.info)
+                )
             )
 
             Button(
@@ -123,7 +128,7 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
                         page, stateOfName, stateOfStatus, stateOfSpecies
                     )
                 }) {
-                Text(text = "Siguiente")
+                Text(text = stringResource(R.string.next_button_text))
             }
         }
     }

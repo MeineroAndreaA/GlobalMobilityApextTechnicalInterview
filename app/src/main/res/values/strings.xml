@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">GMApex Technical Interview</string>
+    <string name="retry_button_text">¿Reintentamos?</string>
+    <string name="lottie_appreciation_loading">Este es solo un delay para apreciar la animacion de Lottie…</string>
+    <string name="prev_button_text">Anterior</string>
+    <string name="cont_pages_text">Pagina %1$s</string>
+    <string name="name_filter_button_text">Nombre</string>
+    <string name="status_filter_button_text">Status</string>
+    <string name="species_filter_button_text">Especies</string>
+    <string name="next_button_text">Siguiente</string>
+    <string name="entry_name_dialog_text">Ingresa el nombre del personaje</string>
+    <string name="accept_button_text">Aceptar</string>
+    <string name="cancel_button_text">Cancelar</string>
+    <string name="select__species_dialog_text">Selecciona la especie a buscar</string>
+    <string name="select_status_dialog_text">Selecciona el estado del personaje</string>
+    <string name="status_alive_text">Vivo</string>
+    <string name="status_dead_text">Muerto</string>
+    <string name="status_unknow_text">Desconocido</string>
+    <string name="single_char_name_text">"Nombre:  "</string>
+    <string name="single_char_specie_text">"Especie: "</string>
+    <string name="single_char_status_text">"Estatus: "</string>
+    <string name="single_char_genre_text">"Genero: "</string>
+    <string name="back_button_text">Volver</string>
 </resources>

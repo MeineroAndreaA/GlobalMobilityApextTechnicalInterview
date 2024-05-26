@@ -18,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.aam.gmapextechnicalinterview.R
 import com.aam.gmapextechnicalinterview.data.core.RetrofitModule
 import com.aam.gmapextechnicalinterview.domain.RemoteDataSource
 import com.aam.gmapextechnicalinterview.presentation.MainViewModel
@@ -61,15 +63,15 @@ fun SingleCharactersScreen(
                 modifier = Modifier.size(200.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Nombre: ${singleCharacter?.name}")
-            Text(text = "Especie: ${singleCharacter?.species}")
-            Text(text = "Estatus: ${singleCharacter?.status}")
-            Text(text = "Genero: ${singleCharacter?.gender}")
+            Text(text = "${stringResource(R.string.single_char_name_text)}${singleCharacter?.name}")
+            Text(text = "${stringResource(R.string.single_char_specie_text)}${singleCharacter?.species}")
+            Text(text = "${stringResource(R.string.single_char_status_text)}${singleCharacter?.status}")
+            Text(text = "${stringResource(R.string.single_char_genre_text)} ${singleCharacter?.gender}")
             Button(
                 onClick = { navigationViewModel.backToList() },
                 modifier = Modifier.padding(16.dp)
             ) {
-                Text(text = "Volver")
+                Text(text = stringResource(R.string.back_button_text))
             }
         }
     }
