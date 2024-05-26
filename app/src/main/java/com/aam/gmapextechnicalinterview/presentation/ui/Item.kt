@@ -18,12 +18,12 @@ import coil.compose.rememberImagePainter
 import com.aam.gmapextechnicalinterview.data.model.response.Results
 
 @Composable
-fun Item(character: Results) {
+fun Item(character: Results, onItemClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
-            .clickable {  }
+            .clickable { onItemClick() }
     ) {
         Image(
             painter = rememberImagePainter(data = character.image),
@@ -32,7 +32,7 @@ fun Item(character: Results) {
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
-            text = character.name!!,
+            text = character.name,
             fontSize = 20.sp,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
