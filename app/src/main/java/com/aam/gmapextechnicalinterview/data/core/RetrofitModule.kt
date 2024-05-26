@@ -16,7 +16,10 @@ object RetrofitModule {
             .build()
     }
 
-    private val api: RickAndMorthyApiService by lazy {
+    /**
+     * @return Initialized singleton instance for external use, for consuming the Rick and Morty API.
+     */
+    val api: RickAndMorthyApiService by lazy {
         retrofitFactory.create(RickAndMorthyApiService::class.java)
     }
 }
