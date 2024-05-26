@@ -19,14 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.aam.gmapextechnicalinterview.R
-import com.aam.gmapextechnicalinterview.data.core.RetrofitModule
-import com.aam.gmapextechnicalinterview.domain.RemoteDataSource
-import com.aam.gmapextechnicalinterview.presentation.MainViewModel
-import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
 
 
 @Composable

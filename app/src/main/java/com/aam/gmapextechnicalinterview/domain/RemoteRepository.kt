@@ -18,7 +18,6 @@ interface RemoteRepository {
         } catch (e: HttpException) {
             return  RndMNetworkResult.Error(RickAndMortyStatus.ERROR, e.message())
         } catch (e: Throwable) {
-            e.printStackTrace(System.out)
             return  RndMNetworkResult.Exception(RickAndMortyStatus.THROWABLE, e)
         }
     }

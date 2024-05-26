@@ -1,4 +1,4 @@
-package com.aam.gmapextechnicalinterview.presentation.ui
+package com.aam.gmapextechnicalinterview.presentation.ui.dialogs
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn

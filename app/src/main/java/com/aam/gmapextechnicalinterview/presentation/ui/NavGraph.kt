@@ -11,8 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aam.gmapextechnicalinterview.data.model.ui.ScreensRoutes
-import com.aam.gmapextechnicalinterview.presentation.MainViewModel
-import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
 import com.aam.gmapextechnicalinterview.presentation.ui.Colors.DarkColorScheme
 import com.aam.gmapextechnicalinterview.presentation.ui.Colors.LightColorScheme
 import kotlinx.coroutines.delay

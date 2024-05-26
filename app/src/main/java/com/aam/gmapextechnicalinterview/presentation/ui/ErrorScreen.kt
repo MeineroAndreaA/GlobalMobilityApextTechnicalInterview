@@ -14,13 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.aam.gmapextechnicalinterview.R
-import com.aam.gmapextechnicalinterview.presentation.MainViewModel
-import com.aam.gmapextechnicalinterview.presentation.NavigationViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState

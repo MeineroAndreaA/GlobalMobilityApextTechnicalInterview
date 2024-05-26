@@ -1,4 +1,4 @@
-package com.aam.gmapextechnicalinterview.presentation
+package com.aam.gmapextechnicalinterview.presentation.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -36,14 +36,9 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                     loading.value = false
                 }
 
-                is RndMNetworkResult.Error -> {
-                    error.value = Pair(true, "")
-                    loading.value = false
-
-                }
-
+                is RndMNetworkResult.Error -> {}
                 is RndMNetworkResult.Exception -> {
-                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                    error.value = Pair(true, ErrorTextHelpers.ERROR_API.error_mesage)
                     loading.value = false
                 }
             }
@@ -60,13 +55,14 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                 }
 
                 is RndMNetworkResult.Error -> {
-                    error.value = Pair(true, "No encontramos el personaje que buscaste")
+                    error.value =
+                        Pair(true, ErrorTextHelpers.ERROR_CHARACTER_NOT_FOUND.error_mesage)
                     loading.value = false
 
                 }
 
                 is RndMNetworkResult.Exception -> {
-                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                    error.value = Pair(true, ErrorTextHelpers.ERROR_API.error_mesage)
                     loading.value = false
                 }
             }
@@ -80,10 +76,11 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                     character.value = response.data
                     loading.value = false
                 }
+
                 is RndMNetworkResult.Error -> {}
 
                 is RndMNetworkResult.Exception -> {
-                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                    error.value = Pair(true, ErrorTextHelpers.ERROR_API.error_mesage)
                     loading.value = false
                 }
             }
@@ -99,13 +96,13 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                 }
 
                 is RndMNetworkResult.Error -> {
-                    error.value = Pair(true, "No hay personajes de esta especie... que raro")
+                    error.value = Pair(true, ErrorTextHelpers.ERROR_SPECIES_NOT_FOUND.error_mesage)
                     loading.value = false
 
                 }
 
                 is RndMNetworkResult.Exception -> {
-                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                    error.value = Pair(true, ErrorTextHelpers.ERROR_API.error_mesage)
                     loading.value = false
                 }
             }
@@ -121,14 +118,12 @@ class MainViewModel @Inject constructor(private val remoteRepository: RemoteData
                 }
 
                 is RndMNetworkResult.Error -> {}
-
                 is RndMNetworkResult.Exception -> {
-                    error.value = Pair(true, response.e.localizedMessage?.toString() ?: "")
+                    error.value = Pair(true, ErrorTextHelpers.ERROR_API.error_mesage)
                     loading.value = false
                 }
             }
 
         }
     }
-
 }

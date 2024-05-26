@@ -1,4 +1,4 @@
-package com.aam.gmapextechnicalinterview.presentation
+package com.aam.gmapextechnicalinterview.presentation.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController

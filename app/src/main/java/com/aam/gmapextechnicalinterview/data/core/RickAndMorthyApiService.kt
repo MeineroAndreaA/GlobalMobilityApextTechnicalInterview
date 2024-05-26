@@ -17,21 +17,6 @@ interface RickAndMorthyApiService {
         @Query("species") species: String?
     ): Response<Character>
 
-    @GET("character/")
-    suspend fun getCharactersByName(
-        @Query("name") name: String?
-    ): Response<Character>
-
-    @GET("character/")
-    suspend fun getCharactersByStatus(
-        @Query("status") status: String?
-    ): Response<Character>
-
-    @GET("character/")
-    suspend fun getCharactersBySpecie(
-        @Query("species") species: String?
-    ): Response<Character>
-
     @GET("character/{id}")
     suspend fun getSingleCharacter(@Path("id") id: Int): Response<Results>
 }
