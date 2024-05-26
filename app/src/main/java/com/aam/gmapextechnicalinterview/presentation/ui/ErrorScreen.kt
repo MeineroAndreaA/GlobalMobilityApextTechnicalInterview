@@ -25,10 +25,15 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 
-
+/**
+ * Composable that displays an error screen with a message and a button to retry.
+ *
+ * @param navigationViewModel Navigation ViewModel used to control navigation.
+ * @param errorMessage Error message to be displayed on the screen.
+ */
 @Composable
 fun ErrorScreen(
-    navigationViewModel: NavigationViewModel, remoteDataViewModel: MainViewModel,
+    navigationViewModel: NavigationViewModel,
     errorMessage: String
 ) {
 

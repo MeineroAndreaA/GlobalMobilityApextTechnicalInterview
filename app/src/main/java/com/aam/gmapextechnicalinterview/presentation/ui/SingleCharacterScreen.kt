@@ -1,5 +1,6 @@
 package com.aam.gmapextechnicalinterview.presentation.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +27,12 @@ import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
 
 
+/**
+ * Composable that displays details of a single character.
+ *
+ * @param navigationViewModel ViewModel that manages navigation within the application.
+ * @param remoteDataViewModel ViewModel that manages remote data for the application.
+ */
 @Composable
 fun SingleCharactersScreen(
     navigationViewModel: NavigationViewModel,
@@ -45,12 +52,13 @@ fun SingleCharactersScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = Color.Black.copy(alpha = 0.5f))
+                .background(color = Color.Black.copy(alpha = 0.8f))
         )
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(16.dp)
+                .background(color = Color.Black),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -71,5 +79,11 @@ fun SingleCharactersScreen(
                 Text(text = stringResource(R.string.back_button_text))
             }
         }
+    }
+
+
+    //Manejo para la deteccion de tap en el boton back del dispositivo por parte del usuario.
+    BackHandler {
+        navigationViewModel.backToList()
     }
 }

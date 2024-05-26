@@ -1,12 +1,15 @@
 package com.aam.gmapextechnicalinterview.presentation.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -24,18 +27,29 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aam.gmapextechnicalinterview.R
 import com.aam.gmapextechnicalinterview.data.model.response.Info
-import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
-import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
 import com.aam.gmapextechnicalinterview.presentation.ui.dialogs.NameEntryDialog
 import com.aam.gmapextechnicalinterview.presentation.ui.dialogs.SpeciesEndtryDialog
 import com.aam.gmapextechnicalinterview.presentation.ui.dialogs.StatusSelectionDialog
+import com.aam.gmapextechnicalinterview.presentation.utils.CleanUpPaginationUrlUtils.cleanUpPageCount
+import com.aam.gmapextechnicalinterview.presentation.utils.CleanUpPaginationUrlUtils.cleanUpPageNumber
+import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
+import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
 import java.net.URL
 
-
+/**
+ * Composable to display a list of characters, whether filtered or not.
+ * @param navigationViewModel Provides navigation functionalities using the [JetpackNavigation] library.
+ * @param remoteDataViewModel Provides functionalities to asynchronously execute API calls.
+ */
 @Composable
 fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewModel: MainViewModel) {
 
+    //Toma el listado en cache
     val charactersList = remoteDataViewModel.listOfCharacter.collectAsState().value
+
+    /*
+    * Estados de los dialogos y de las selecciones en los filtros
+    * */
     var showDialogName by remember { mutableStateOf(false) }
     var showDialogStatus by remember { mutableStateOf(false) }
     var showDialogSpecies by remember { mutableStateOf(false) }
@@ -49,6 +63,8 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
             .padding(16.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
+
+        //Botones de fitros
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -58,16 +74,17 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
             Button(modifier = Modifier.weight(1f), onClick = { showDialogName = true }) {
                 (Text(text = stringResource(R.string.name_filter_button_text)))
             }
-
+            Spacer(modifier = Modifier.width(5.dp))
             Button(modifier = Modifier.weight(1f), onClick = { showDialogStatus = true }) {
                 (Text(text = stringResource(R.string.status_filter_button_text)))
             }
-
+            Spacer(modifier = Modifier.width(5.dp))
             Button(modifier = Modifier.weight(1f), onClick = { showDialogSpecies = true }) {
                 (Text(text = stringResource(R.string.species_filter_button_text)))
             }
         }
 
+        //Listado de personajes
         LazyColumn(
             modifier = Modifier.weight(1f)
         ) {
@@ -78,6 +95,8 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
                 })
             }
         }
+
+        //Botones para el manejo del paginado.
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -94,7 +113,7 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
                 ),
                 onClick = {
                     val page = cleanUpPageNumber(
-                        charactersList.info.next.toString()
+                        charactersList.info.prev.toString()
                     )
                     remoteDataViewModel.getCharactersList(
                         page,
@@ -107,6 +126,7 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
                 Text(text = stringResource(R.string.prev_button_text))
             }
 
+            //Contador de paginas.
             Text(
                 modifier = Modifier.align(Alignment.CenterVertically),
                 text = stringResource(
@@ -136,6 +156,7 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
         }
     }
 
+    //Instancia de los dialogos, donde se llama a la API para que filtre los resultados de la lista.
     NameEntryDialog(
         showDialog = showDialogName,
         onDismiss = { showDialogName = false },
@@ -175,25 +196,10 @@ fun CharactersScreen(navigationViewModel: NavigationViewModel, remoteDataViewMod
             remoteDataViewModel.getCharacterBySpecie(null, specie)
         })
 
-}
-
-
-fun cleanUpPageCount(info: Info): String {
-    val currentPage =
-        if (info.prev.isNullOrBlank()) 1.toString() else (cleanUpPageNumber(info.prev.toString())!! + 1).toString()
-    return "${currentPage}/${info.pages}"
-}
-
-fun cleanUpPageNumber(urlPages: String): Int? {
-    val pageUrlQuery = URL(urlPages).query
-    val params = pageUrlQuery.split("&")
-    for (singleParam in params) {
-        val value = singleParam.split("=")
-        if (value[0] == "page" && value.size == 2) {
-            return value[1].toInt()
-        }
+    BackHandler {
+        navigationViewModel.navController.popBackStack()
     }
-    return if (!pageUrlQuery.isNullOrBlank()) pageUrlQuery.substringAfter('=').toInt() else null
 }
+
 
 

@@ -17,6 +17,12 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.aam.gmapextechnicalinterview.data.model.response.Results
 
+/**
+ * Composable that populates the character list.
+ *
+ * @param character Data of the character to be displayed.
+ * @param onItemClick Action to perform when the item is clicked.
+ */
 @Composable
 fun Item(character: Results, onItemClick: () -> Unit) {
     Row(
