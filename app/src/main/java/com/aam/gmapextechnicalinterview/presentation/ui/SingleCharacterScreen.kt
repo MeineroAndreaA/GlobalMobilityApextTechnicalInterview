@@ -68,10 +68,10 @@ fun SingleCharactersScreen(
                 modifier = Modifier.size(200.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "${stringResource(R.string.single_char_name_text)}${singleCharacter?.name}")
-            Text(text = "${stringResource(R.string.single_char_specie_text)}${singleCharacter?.species}")
-            Text(text = "${stringResource(R.string.single_char_status_text)}${singleCharacter?.status}")
-            Text(text = "${stringResource(R.string.single_char_genre_text)} ${singleCharacter?.gender}")
+            Text(text = "${stringResource(R.string.single_char_name_text)}${singleCharacter?.name}", color = Colors.PurpleGrey80)
+            Text(text = "${stringResource(R.string.single_char_specie_text)}${singleCharacter?.species}",color = Colors.PurpleGrey80)
+            Text(text = "${stringResource(R.string.single_char_status_text)}${singleCharacter?.status}", color = Colors.PurpleGrey80)
+            Text(text = "${stringResource(R.string.single_char_genre_text)} ${singleCharacter?.gender}", color = Colors.PurpleGrey80)
             Button(
                 onClick = { navigationViewModel.backToList() },
                 modifier = Modifier.padding(16.dp)
