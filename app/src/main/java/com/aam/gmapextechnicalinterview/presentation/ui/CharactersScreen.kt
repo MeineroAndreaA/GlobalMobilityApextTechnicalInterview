@@ -26,7 +26,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aam.gmapextechnicalinterview.R
-import com.aam.gmapextechnicalinterview.data.model.response.Info
 import com.aam.gmapextechnicalinterview.presentation.ui.dialogs.NameEntryDialog
 import com.aam.gmapextechnicalinterview.presentation.ui.dialogs.SpeciesEndtryDialog
 import com.aam.gmapextechnicalinterview.presentation.ui.dialogs.StatusSelectionDialog
@@ -34,7 +33,6 @@ import com.aam.gmapextechnicalinterview.presentation.utils.CleanUpPaginationUrlU
 import com.aam.gmapextechnicalinterview.presentation.utils.CleanUpPaginationUrlUtils.cleanUpPageNumber
 import com.aam.gmapextechnicalinterview.presentation.view_model.MainViewModel
 import com.aam.gmapextechnicalinterview.presentation.view_model.NavigationViewModel
-import java.net.URL
 
 /**
  * Composable to display a list of characters, whether filtered or not.
