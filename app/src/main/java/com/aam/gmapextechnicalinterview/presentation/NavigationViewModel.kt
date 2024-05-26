@@ -10,11 +10,12 @@ class NavigationViewModel: ViewModel() {
 
     lateinit var navController: NavController
 
-    fun navigateToDetail(id: Int) {
+    fun navigateToDetail() {
         navController.navigate(ScreensRoutes.CharacterDetail.route)
     }
 
-    fun backToList(page: Int?) {
+    fun backToList() {
+        navController.popBackStack()
         navController.navigate(ScreensRoutes.CharacterList.route)
     }
 }

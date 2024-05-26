@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         try {
             setContent {
-                MainNavGraph(navigationViewModel)
+                    MainNavGraph(navigationViewModel)
             }
         } catch (e: Exception) {
             println(e.message)
